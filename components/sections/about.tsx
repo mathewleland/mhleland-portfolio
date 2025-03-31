@@ -6,22 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { FaDownload, FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa'
 import Image from "next/image"
-
-const skills = [
-  "React/Next.js",
-  "TypeScript",
-  "Node.js",
-  "Tailwind CSS",
-  "Framer Motion",
-  "UI/UX Design",
-]
-
-const interests = [
-  { icon: "🚀", label: "Space Exploration" },
-  { icon: "🎮", label: "Gaming" },
-  { icon: "📚", label: "Reading" },
-  { icon: "🎨", label: "Digital Art" },
-]
+import { aboutSection } from "@/lib/constants"
 
 const floatingAnimation = {
   y: ["-10%", "10%"],
@@ -40,7 +25,7 @@ export function AboutSection() {
   const [showBio, setShowBio] = useState(false)
 
   return (
-    <section id="about" className="py-24 bg-gradient-to-br from-background to-secondary/30 overflow-hidden">
+    <section id={aboutSection.id} className="py-24 bg-gradient-to-br from-background to-secondary/30 overflow-hidden">
       <div className="container px-4 mx-auto relative">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -59,13 +44,13 @@ export function AboutSection() {
               className="relative aspect-square rounded-2xl overflow-hidden"
             >
               <Image
-                src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1288&auto=format&fit=crop"
-                alt="Profile"
+                src={aboutSection.image.src}
+                alt={aboutSection.image.alt}
                 fill
                 className="object-cover"
                 priority
               />
-              <motion.div 
+              <motion.div
                 className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -90,7 +75,7 @@ export function AboutSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <h2 className="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">About Me</h2>
+              <h2 className="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">{aboutSection.heading}</h2>
               <AnimatePresence mode="wait">
                 {showBio ? (
                   <motion.p
@@ -101,10 +86,7 @@ export function AboutSection() {
                     transition={{ duration: 0.3 }}
                     className="text-muted-foreground"
                   >
-                    I'm a passionate developer focused on creating beautiful and functional web experiences. 
-                    With expertise in modern web technologies, I bring ideas to life through clean code and 
-                    thoughtful design. My journey in tech started with a fascination for problem-solving and 
-                    has evolved into a career dedicated to crafting intuitive digital solutions.
+                    {aboutSection.fullBio}
                   </motion.p>
                 ) : (
                   <motion.p
@@ -115,16 +97,16 @@ export function AboutSection() {
                     transition={{ duration: 0.3 }}
                     className="text-muted-foreground"
                   >
-                    I'm a passionate developer focused on creating beautiful and functional web experiences...
+                    {aboutSection.shortBio}
                   </motion.p>
                 )}
               </AnimatePresence>
-              <Button 
-                variant="link" 
+              <Button
+                variant="link"
                 onClick={() => setShowBio(!showBio)}
                 className="mt-2 p-0 h-auto font-semibold text-primary hover:text-primary/80"
               >
-                {showBio ? "Read Less" : "Read More"}
+                {showBio ? aboutSection.buttons.readLess : aboutSection.buttons.readMore}
               </Button>
             </motion.div>
 
@@ -136,9 +118,9 @@ export function AboutSection() {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="space-y-4"
             >
-              <h3 className="text-xl font-semibold">Core Skills</h3>
+              <h3 className="text-xl font-semibold">{aboutSection.skills.heading}</h3>
               <div className="flex flex-wrap gap-2">
-                {skills.map((skill, index) => (
+                {aboutSection.skills.list.map((skill, index) => (
                   <motion.button
                     key={skill}
                     initial={{ opacity: 0, scale: 0.8 }}
@@ -147,11 +129,10 @@ export function AboutSection() {
                     whileTap={{ scale: 0.95 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.3, delay: index * 0.1 }}
-                    className={`px-3 py-1 rounded-full text-sm ${
-                      activeSkill === skill 
-                        ? "bg-primary text-primary-foreground" 
-                        : "bg-secondary text-secondary-foreground"
-                    }`}
+                    className={`px-3 py-1 rounded-full text-sm ${activeSkill === skill
+                      ? "bg-primary text-primary-foreground"
+                      : "bg-secondary text-secondary-foreground"
+                      }`}
                     onClick={() => setActiveSkill(activeSkill === skill ? null : skill)}
                   >
                     {skill}
@@ -167,7 +148,7 @@ export function AboutSection() {
                     transition={{ duration: 0.2 }}
                     className="mt-2 p-2 bg-secondary/50 rounded-md text-sm"
                   >
-                    {`${activeSkill}: Click to see projects using this skill!`}
+                    {aboutSection.skills.activeText(activeSkill)}
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -181,9 +162,9 @@ export function AboutSection() {
               transition={{ duration: 0.5, delay: 0.4 }}
               className="space-y-4"
             >
-              <h3 className="text-xl font-semibold">Interests</h3>
+              <h3 className="text-xl font-semibold">{aboutSection.interests.heading}</h3>
               <div className="grid grid-cols-2 gap-4">
-                {interests.map((interest, index) => (
+                {aboutSection.interests.list.map((interest, index) => (
                   <motion.div
                     key={interest.label}
                     initial={{ opacity: 0, y: 20 }}
@@ -212,11 +193,11 @@ export function AboutSection() {
             >
               <Button className="bg-gradient-to-r from-primary to-secondary hover:from-primary/80 hover:to-secondary/80 text-primary-foreground">
                 <FaDownload className="mr-2 h-4 w-4" />
-                Download CV
+                {aboutSection.buttons.downloadCv}
               </Button>
               <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
                 <FaEnvelope className="mr-2 h-4 w-4" />
-                Contact Me
+                {aboutSection.buttons.contactMe}
               </Button>
               <Button variant="ghost" size="icon" className="text-primary hover:bg-primary/20">
                 <FaGithub className="h-5 w-5" />

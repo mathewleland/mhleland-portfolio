@@ -5,6 +5,7 @@ import { TypeAnimation } from "react-type-animation"
 import { Button } from "@/components/ui/button"
 import { ChevronDown } from "lucide-react"
 import Link from "next/link"
+import { heroSection } from "@/lib/constants"
 
 export function HeroSection() {
   return (
@@ -28,7 +29,7 @@ export function HeroSection() {
             transition={{ duration: 0.5 }}
             className="text-4xl md:text-6xl font-bold mb-6"
           >
-            Creative Developer
+            {heroSection.title}
           </motion.h1>
 
           <motion.div
@@ -38,14 +39,7 @@ export function HeroSection() {
             className="text-xl md:text-2xl text-muted-foreground mb-8 h-[60px]"
           >
             <TypeAnimation
-              sequence={[
-                "Building beautiful web experiences",
-                1000,
-                "Crafting intuitive interfaces",
-                1000,
-                "Creating engaging animations",
-                1000,
-              ]}
+              sequence={heroSection.typewriterSequence}
               wrapper="span"
               speed={50}
               repeat={Infinity}
@@ -58,17 +52,17 @@ export function HeroSection() {
             transition={{ delay: 0.4, duration: 0.5 }}
             className="flex justify-center space-x-4"
           >
-            <Link href={"/#projects"}>
-            <Button  size="lg" className="group">
-              View Projects
-              <ChevronDown className="ml-2 h-4 w-4 transition-transform group-hover:translate-y-1" />
-            </Button>
-           </Link>
-            <Link href={"/#contact"}>
-            <Button  size="lg" variant="outline">
-              Contact Me
-            </Button>
-              </Link>
+            <Link href={heroSection.links.projects}>
+              <Button size="lg" className="group">
+                {heroSection.buttons.projects}
+                <ChevronDown className="ml-2 h-4 w-4 transition-transform group-hover:translate-y-1" />
+              </Button>
+            </Link>
+            <Link href={heroSection.links.contact}>
+              <Button size="lg" variant="outline">
+                {heroSection.buttons.contact}
+              </Button>
+            </Link>
           </motion.div>
         </div>
       </div>

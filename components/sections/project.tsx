@@ -15,46 +15,43 @@ type Project = {
   textColor: string;
   details: string;
   technologies: string[];
-  github: string;
+  github?: string;
   live: string;
 };
 
 const projects: Project[] = [
   {
     id: 1,
-    title: "AI-Powered Task Manager",
-    description: "An intelligent task management system that uses machine learning to prioritize and categorize tasks.",
-    image: "https://tinyurl.com/226ofh39",
+    title: "CLEAR Verified",
+    description: "CLEAR Verified is an identity verification platform that allows users to verify their identity and documents.",
+    image: "./CLEAR_Verified.png",
     color: "from-blue-500 to-purple-600",
     textColor: "text-blue-100",
-    details: "This project leverages natural language processing to understand task descriptions and automatically assign priorities. It also includes a smart scheduling feature that optimizes your daily workflow.",
-    technologies: ["React", "Node.js", "TensorFlow.js", "MongoDB"],
-    github: "https://github.com/yourusername/ai-task-manager",
-    live: "https://ai-task-manager.example.com"
+    details: "This application scaled to 2MM+ users within the first year",
+    technologies: ["React", "Next.js", "Typscript", "Technical Writing", "Incident Management"],
+    live: "https://identity.clearme.com/"
   },
   {
     id: 2,
-    title: "Virtual Reality Fitness App",
-    description: "A VR application that gamifies workout routines, making fitness fun and engaging for users.",
-    image: "https://tinyurl.com/25ydsheu",
+    title: "Unified Enrollment Flow",
+    description: "Unified multiple enrollment flow handling all new user signups, simplifying user data models in databases",
+    image: "./enrollment.png",
     color: "from-green-500 to-yellow-500",
     textColor: "text-green-100",
     details: "Users can choose from various virtual environments and workout types. The app tracks body movements using VR controllers and provides real-time feedback on form and performance.",
-    technologies: ["Unity", "C#", "Oculus SDK", "Firebase"],
-    github: "https://github.com/yourusername/vr-fitness",
-    live: "https://vr-fitness.example.com"
+    technologies: ["react", "Gatsby", "Typescript", "CSS", "Technical Writing"],
+    live: "https://clearme.com/enroll"
   },
   {
     id: 3,
-    title: "Blockchain-based Supply Chain",
-    description: "A decentralized application for tracking products from manufacture to delivery, ensuring transparency and authenticity.",
-    image: "https://tinyurl.com/258xcbsc",
+    title: "VectorSurv Maps",
+    description: "Primary front end engineer, specializing in all data visualizations for all mosquito collections in California and the US. Created maps for geospatial data with Mapbox and build charts with D3.js",
+    image: "./vectorSurv.png",
     color: "from-red-500 to-pink-600",
     textColor: "text-red-100",
-    details: "This dApp uses smart contracts to record each step of the supply chain process. It includes features like QR code scanning for instant product verification and a consumer-facing mobile app.",
-    technologies: ["Solidity", "React Native", "Web3.js", "IPFS"],
-    github: "https://github.com/yourusername/blockchain-supply-chain",
-    live: "https://blockchain-supply.example.com"
+    details: "These maps plot out hundreds to sometimes thousands of data points and allow them to rapidly change to user input with minimal latency. Any input also dynamically renders new charts with shareable URLs. Visualizations rely on my own RESTful endpoints on an Express server and PostgreSQL database.",
+    technologies: ["React", "D3.js", "HTML/CSS", "Styled Components", "Node.js"],
+    live: "https://maps.vectorsurv.org"
   }
 ];
 
@@ -144,8 +141,8 @@ export function ProjectSection() {
                   transition={{ delay: 1.2 + index * 0.1, duration: 0.5 }}
                   className="mt-4"
                 >
-                  <Button 
-                    size="lg" 
+                  <Button
+                    size="lg"
                     className={`group bg-white/20 hover:bg-white/30 ${project.textColor}`}
                     onClick={() => setSelectedProject(project)} // now works fine
                   >
@@ -167,9 +164,9 @@ export function ProjectSection() {
               <DialogHeader>
                 <DialogTitle>{selectedProject.title}</DialogTitle>
                 <DialogDescription>
-                  <img 
-                    src={selectedProject.image} 
-                    alt={selectedProject.title} 
+                  <img
+                    src={selectedProject.image}
+                    alt={selectedProject.title}
                     className="w-full h-48 object-cover rounded-lg mb-4"
                   />
                   <p className="mb-4">{selectedProject.details}</p>
@@ -182,12 +179,7 @@ export function ProjectSection() {
                     ))}
                   </div>
                   <div className="flex gap-4">
-                    <a href={selectedProject.github} target="_blank" rel="noopener noreferrer">
-                      <Button className="group bg-gray-800 text-white hover:bg-gray-700">
-                        <FaGithub className="mr-2" />
-                        GitHub
-                      </Button>
-                    </a>
+
                     <a href={selectedProject.live} target="_blank" rel="noopener noreferrer">
                       <Button className="group bg-blue-600 text-white hover:bg-blue-500">
                         <FaExternalLinkAlt className="mr-2" />
