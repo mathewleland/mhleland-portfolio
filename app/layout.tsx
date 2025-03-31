@@ -10,7 +10,8 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Mathew Leland: Software Extraordinaire',
-  description: 'Mathew Leland is a software extraordinaire with a passion for building innovative solutions. With a focus on cutting-edge technologies, he creates dynamic and visually engaging web applications. Explore his projects and experiences in software development, technical planning, and more.',
+  description:
+    'Mathew Leland is a software extraordinaire with a passion for building innovative solutions. With a focus on cutting-edge technologies, he creates dynamic and visually engaging web applications. Explore his projects and experiences in software development, technical planning, and more.',
   icons: {
     icon: '/dev.png',
   },

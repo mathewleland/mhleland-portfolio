@@ -1,41 +1,41 @@
-"use client"
+'use client';
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { motion } from "framer-motion"
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import { Menu, Moon, Sun } from "lucide-react"
-import { useTheme } from "next-themes"
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { motion } from 'framer-motion';
+import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
+import { Menu, Moon, Sun } from 'lucide-react';
+import { useTheme } from 'next-themes';
 
 const navItems = [
-  { name: "Home", path: "/" },
-  { name: "About", path: "/#about" },
-  { name: "Projects", path: "/#projects" },
-  { name: "Skills", path: "/#skills" },
-  { name: "Experience", path: "/#experiences" },
-  { name: "Contact", path: "/#contact" },
-]
+  { name: 'Home', path: '/' },
+  { name: 'About', path: '/#about' },
+  { name: 'Projects', path: '/#projects' },
+  { name: 'Skills', path: '/#skills' },
+  { name: 'Experience', path: '/#experiences' },
+  { name: 'Contact', path: '/#contact' },
+];
 
 export function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [mounted, setMounted] = useState(false)
-  const pathname = usePathname()
-  const { theme, setTheme } = useTheme()
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const pathname = usePathname();
+  const { theme, setTheme } = useTheme();
 
   useEffect(() => {
-    setMounted(true)
+    setMounted(true);
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   if (!mounted) {
-    return null
+    return null;
   }
 
   return (
@@ -43,10 +43,10 @@ export function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={cn(
-        "fixed top-0 z-50 w-full transition-all duration-300",
+        'fixed top-0 z-50 w-full transition-all duration-300',
         isScrolled
-          ? "bg-background/80 backdrop-blur-md shadow-sm"
-          : "bg-transparent"
+          ? 'bg-background/80 backdrop-blur-md shadow-sm'
+          : 'bg-transparent'
       )}
     >
       <div className="container mx-auto px-4">
@@ -64,10 +64,10 @@ export function Navbar() {
                 key={item.path}
                 href={item.path}
                 className={cn(
-                  "relative text-sm font-medium transition-colors hover:text-primary",
+                  'relative text-sm font-medium transition-colors hover:text-primary',
                   pathname === item.path
-                    ? "text-primary"
-                    : "text-muted-foreground"
+                    ? 'text-primary'
+                    : 'text-muted-foreground'
                 )}
               >
                 {item.name}
@@ -86,9 +86,9 @@ export function Navbar() {
               variant="ghost"
               size="icon"
               aria-label="Toggle theme"
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
             >
-              {theme === "dark" ? (
+              {theme === 'dark' ? (
                 <Sun className="h-5 w-5" />
               ) : (
                 <Moon className="h-5 w-5" />
@@ -114,8 +114,8 @@ export function Navbar() {
           y: isMobileMenuOpen ? 0 : -20,
         }}
         className={cn(
-          "absolute top-16 left-0 right-0 bg-background/95 backdrop-blur-md shadow-lg md:hidden",
-          !isMobileMenuOpen && "hidden"
+          'absolute top-16 left-0 right-0 bg-background/95 backdrop-blur-md shadow-lg md:hidden',
+          !isMobileMenuOpen && 'hidden'
         )}
       >
         <div className="container mx-auto px-4 py-4">
@@ -124,10 +124,10 @@ export function Navbar() {
               key={item.path}
               href={item.path}
               className={cn(
-                "block py-2 text-sm font-medium transition-colors hover:text-primary",
+                'block py-2 text-sm font-medium transition-colors hover:text-primary',
                 pathname === item.path
-                  ? "text-primary"
-                  : "text-muted-foreground"
+                  ? 'text-primary'
+                  : 'text-muted-foreground'
               )}
               onClick={() => setIsMobileMenuOpen(false)}
             >
@@ -137,5 +137,5 @@ export function Navbar() {
         </div>
       </motion.div>
     </motion.nav>
-  )
+  );
 }

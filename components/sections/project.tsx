@@ -1,10 +1,16 @@
-"use client"
+'use client';
 
-import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog"
-import { FaChevronRight, FaGithub, FaExternalLinkAlt } from 'react-icons/fa'
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Button } from '@/components/ui/button';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from '@/components/ui/dialog';
+import { FaChevronRight, FaExternalLinkAlt } from 'react-icons/fa';
 
 type Project = {
   id: number;
@@ -22,37 +28,58 @@ type Project = {
 const projects: Project[] = [
   {
     id: 1,
-    title: "CLEAR Verified",
-    description: "CLEAR Verified is an identity verification platform that allows users to verify their identity and documents.",
-    image: "./CLEAR_Verified.png",
-    color: "from-blue-500 to-purple-600",
-    textColor: "text-blue-100",
-    details: "This application scaled to 2MM+ users within the first year",
-    technologies: ["React", "Next.js", "Typscript", "Technical Writing", "Incident Management"],
-    live: "https://identity.clearme.com/"
+    title: 'CLEAR Verified',
+    description:
+      'CLEAR Verified is an identity verification platform that allows users to verify their identity and documents.',
+    image: './CLEAR_Verified.png',
+    color: 'from-blue-500 to-purple-600',
+    textColor: 'text-blue-100',
+    details: 'This application scaled to 2MM+ users within the first year',
+    technologies: [
+      'React',
+      'Next.js',
+      'Typscript',
+      'Terraform',
+      'NestJS',
+      'Python',
+      'Technical Writing',
+      'Incident Management',
+    ],
+    live: 'https://identity.clearme.com/',
   },
   {
     id: 2,
-    title: "Unified Enrollment Flow",
-    description: "Unified multiple enrollment flow handling all new user signups, simplifying user data models in databases",
-    image: "./enrollment.png",
-    color: "from-green-500 to-yellow-500",
-    textColor: "text-green-100",
-    details: "Users can choose from various virtual environments and workout types. The app tracks body movements using VR controllers and provides real-time feedback on form and performance.",
-    technologies: ["react", "Gatsby", "Typescript", "CSS", "Technical Writing"],
-    live: "https://clearme.com/enroll"
+    title: 'Unified Enrollment Flow',
+    description:
+      'Unified multiple enrollment flow handling all new user signups, simplifying user data models in databases',
+    image: './enrollment.png',
+    color: 'from-green-500 to-yellow-500',
+    textColor: 'text-green-100',
+    details:
+      'A/B tested and implemented a new enrollment flow that reduced the number of steps in the enrollment process, created brand new UI components and increased family conversion rates by 41%',
+    technologies: ['React', 'Gatsby', 'Typescript', 'Styled Components', 'Technical Writing'],
+    live: 'https://clearme.com/enroll',
   },
   {
     id: 3,
-    title: "VectorSurv Maps",
-    description: "Primary front end engineer, specializing in all data visualizations for all mosquito collections in California and the US. Created maps for geospatial data with Mapbox and build charts with D3.js",
-    image: "./vectorSurv.png",
-    color: "from-red-500 to-pink-600",
-    textColor: "text-red-100",
-    details: "These maps plot out hundreds to sometimes thousands of data points and allow them to rapidly change to user input with minimal latency. Any input also dynamically renders new charts with shareable URLs. Visualizations rely on my own RESTful endpoints on an Express server and PostgreSQL database.",
-    technologies: ["React", "D3.js", "HTML/CSS", "Styled Components", "Node.js"],
-    live: "https://maps.vectorsurv.org"
-  }
+    title: 'VectorSurv Maps',
+    description:
+      'Primary front end engineer, specializing in all data visualizations for all mosquito collections in California and the US. Created maps for geospatial data with Mapbox and build charts with D3.js',
+    image: './vectorSurv.png',
+    color: 'from-red-500 to-pink-600',
+    textColor: 'text-red-100',
+    details:
+      'These maps plot out hundreds to sometimes thousands of data points and allow them to rapidly change to user input with minimal latency. Any input also dynamically renders new charts with shareable URLs. Visualizations rely on my own RESTful endpoints on an Express server and PostgreSQL database.',
+    technologies: [
+      'React',
+      'PostgreSQL',
+      'Node.js',
+      'D3.js',
+      'HTML/CSS',
+      'Styled Components',
+    ],
+    live: 'https://maps.vectorsurv.org',
+  },
 ];
 
 export function ProjectSection() {
@@ -60,7 +87,10 @@ export function ProjectSection() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   return (
-    <section id="projects" className="py-24 bg-gradient-to-br from-background to-secondary/30 transition-colors duration-300 overflow-hidden">
+    <section
+      id="projects"
+      className="py-24 bg-gradient-to-br from-background to-secondary/30 transition-colors duration-300 overflow-hidden"
+    >
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -90,7 +120,9 @@ export function ProjectSection() {
               transition={{ delay: 0.2, duration: 0.5 }}
               className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto"
             >
-              Explore a collection of innovative projects that showcase my expertise in cutting-edge web technologies and creative problem-solving.
+              Explore a collection of innovative projects that showcase my
+              expertise in cutting-edge web technologies and creative
+              problem-solving.
             </motion.p>
           </div>
 
@@ -159,7 +191,10 @@ export function ProjectSection() {
       {/* Project Details Modal */}
       <AnimatePresence>
         {selectedProject && (
-          <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>
+          <Dialog
+            open={!!selectedProject}
+            onOpenChange={() => setSelectedProject(null)}
+          >
             <DialogContent className="sm:max-w-[625px]">
               <DialogHeader>
                 <DialogTitle>{selectedProject.title}</DialogTitle>
@@ -173,14 +208,20 @@ export function ProjectSection() {
                   <h4 className="font-semibold mb-2">Technologies Used:</h4>
                   <div className="flex flex-wrap gap-2 mb-4">
                     {selectedProject.technologies.map((tech) => (
-                      <span key={tech} className="px-2 py-1 bg-secondary text-secondary-foreground rounded-full text-sm">
+                      <span
+                        key={tech}
+                        className="px-2 py-1 bg-secondary text-secondary-foreground rounded-full text-sm"
+                      >
                         {tech}
                       </span>
                     ))}
                   </div>
                   <div className="flex gap-4">
-
-                    <a href={selectedProject.live} target="_blank" rel="noopener noreferrer">
+                    <a
+                      href={selectedProject.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <Button className="group bg-blue-600 text-white hover:bg-blue-500">
                         <FaExternalLinkAlt className="mr-2" />
                         Live Demo
@@ -194,5 +235,5 @@ export function ProjectSection() {
         )}
       </AnimatePresence>
     </section>
-  )
+  );
 }

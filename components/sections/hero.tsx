@@ -1,11 +1,11 @@
-"use client"
+'use client';
 
-import { motion } from "framer-motion"
-import { TypeAnimation } from "react-type-animation"
-import { Button } from "@/components/ui/button"
-import { ChevronDown } from "lucide-react"
-import Link from "next/link"
-import { heroSection } from "@/lib/constants"
+import { motion } from 'framer-motion';
+import { TypeAnimation } from 'react-type-animation';
+import { Button } from '@/components/ui/button';
+import { ChevronDown } from 'lucide-react';
+import Link from 'next/link';
+import { heroSection } from '@/lib/constants';
 
 export function HeroSection() {
   return (
@@ -58,11 +58,11 @@ export function HeroSection() {
                 <ChevronDown className="ml-2 h-4 w-4 transition-transform group-hover:translate-y-1" />
               </Button>
             </Link>
-            <Link href={heroSection.links.contact}>
+            {/* <Link href={heroSection.links.contact}>
               <Button size="lg" variant="outline">
                 {heroSection.buttons.contact}
               </Button>
-            </Link>
+            </Link> */}
           </motion.div>
         </div>
       </div>
@@ -75,12 +75,12 @@ export function HeroSection() {
           delay: 1,
           duration: 0.5,
           repeat: Infinity,
-          repeatType: "reverse",
+          repeatType: 'reverse',
         }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
       >
         <ChevronDown className="h-6 w-6 text-muted-foreground" />
       </motion.div>
     </motion.section>
-  )
+  );
 }

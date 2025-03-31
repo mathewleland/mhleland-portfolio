@@ -1,4 +1,3 @@
-
 # 🚀 **Folio-Motion: Interactive & Animated Developer Portfolio**
 
 Welcome to **Folio-Motion**, a stunning, interactive, and animation-rich developer portfolio built with the latest technologies: **Next.js**, **Tailwind CSS**, **Framer Motion**, **ShadCN UI**, and **TypeScript**. This portfolio is designed to showcase your skills, projects, and experience with smooth animations, dynamic hover effects, and a modern, responsive design. It's built to impress and provide an engaging user experience!
@@ -34,17 +33,20 @@ Welcome to **Folio-Motion**, a stunning, interactive, and animation-rich develop
 Follow these steps to get the project up and running locally:
 
 ### 1. **Clone the repository**:
+
 ```bash
 git clone https://github.com/aniruddhaadak80/folio-motion.git
 ```
 
 ### 2. **Install dependencies**:
+
 ```bash
 cd folio-motion
 npm install
 ```
 
 ### 3. **Run the development server**:
+
 ```bash
 npm run dev
 ```
@@ -92,6 +94,3 @@ If you have any questions or suggestions, feel free to reach out to me:
 ---
 
 ### ⭐ **Thank you for checking out my portfolio! Feel free to fork, clone, and customize!** 🌟
-
-
-

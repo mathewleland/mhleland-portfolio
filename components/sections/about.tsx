@@ -1,31 +1,34 @@
-"use client"
+'use client';
 
-import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { Card } from "@/components/ui/card"
-import { FaDownload, FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa'
-import Image from "next/image"
-import { aboutSection } from "@/lib/constants"
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
+import { FaDownload, FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import Image from 'next/image';
+import { aboutSection } from '@/lib/constants';
 
 const floatingAnimation = {
-  y: ["-10%", "10%"],
+  y: ['-10%', '10%'],
   transition: {
     y: {
       duration: 2,
       repeat: Infinity,
-      repeatType: "reverse",
-      ease: "easeInOut"
-    }
-  }
-}
+      repeatType: 'reverse',
+      ease: 'easeInOut',
+    },
+  },
+};
 
 export function AboutSection() {
-  const [activeSkill, setActiveSkill] = useState<string | null>(null)
-  const [showBio, setShowBio] = useState(false)
+  const [activeSkill, setActiveSkill] = useState<string | null>(null);
+  const [showBio, setShowBio] = useState(false);
 
   return (
-    <section id={aboutSection.id} className="py-24 bg-gradient-to-br from-background to-secondary/30 overflow-hidden">
+    <section
+      id={aboutSection.id}
+      className="py-24 bg-gradient-to-br from-background to-secondary/30 overflow-hidden"
+    >
       <div className="container px-4 mx-auto relative">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -75,13 +78,15 @@ export function AboutSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <h2 className="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">{aboutSection.heading}</h2>
+              <h2 className="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
+                {aboutSection.heading}
+              </h2>
               <AnimatePresence mode="wait">
                 {showBio ? (
                   <motion.p
                     key="full-bio"
                     initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: "auto" }}
+                    animate={{ opacity: 1, height: 'auto' }}
                     exit={{ opacity: 0, height: 0 }}
                     transition={{ duration: 0.3 }}
                     className="text-muted-foreground"
@@ -92,7 +97,7 @@ export function AboutSection() {
                   <motion.p
                     key="short-bio"
                     initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: "auto" }}
+                    animate={{ opacity: 1, height: 'auto' }}
                     exit={{ opacity: 0, height: 0 }}
                     transition={{ duration: 0.3 }}
                     className="text-muted-foreground"
@@ -106,7 +111,9 @@ export function AboutSection() {
                 onClick={() => setShowBio(!showBio)}
                 className="mt-2 p-0 h-auto font-semibold text-primary hover:text-primary/80"
               >
-                {showBio ? aboutSection.buttons.readLess : aboutSection.buttons.readMore}
+                {showBio
+                  ? aboutSection.buttons.readLess
+                  : aboutSection.buttons.readMore}
               </Button>
             </motion.div>
 
@@ -118,7 +125,9 @@ export function AboutSection() {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="space-y-4"
             >
-              <h3 className="text-xl font-semibold">{aboutSection.skills.heading}</h3>
+              <h3 className="text-xl font-semibold">
+                {aboutSection.skills.heading}
+              </h3>
               <div className="flex flex-wrap gap-2">
                 {aboutSection.skills.list.map((skill, index) => (
                   <motion.button
@@ -130,10 +139,12 @@ export function AboutSection() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.3, delay: index * 0.1 }}
                     className={`px-3 py-1 rounded-full text-sm ${activeSkill === skill
-                      ? "bg-primary text-primary-foreground"
-                      : "bg-secondary text-secondary-foreground"
+                      ? 'bg-primary text-primary-foreground'
+                      : 'bg-secondary text-secondary-foreground'
                       }`}
-                    onClick={() => setActiveSkill(activeSkill === skill ? null : skill)}
+                    onClick={() =>
+                      setActiveSkill(activeSkill === skill ? null : skill)
+                    }
                   >
                     {skill}
                   </motion.button>
@@ -162,7 +173,9 @@ export function AboutSection() {
               transition={{ duration: 0.5, delay: 0.4 }}
               className="space-y-4"
             >
-              <h3 className="text-xl font-semibold">{aboutSection.interests.heading}</h3>
+              <h3 className="text-xl font-semibold">
+                {aboutSection.interests.heading}
+              </h3>
               <div className="grid grid-cols-2 gap-4">
                 {aboutSection.interests.list.map((interest, index) => (
                   <motion.div
@@ -191,18 +204,33 @@ export function AboutSection() {
               transition={{ duration: 0.5, delay: 0.5 }}
               className="flex flex-wrap gap-4"
             >
-              <Button className="bg-gradient-to-r from-primary to-secondary hover:from-primary/80 hover:to-secondary/80 text-primary-foreground">
+              <Button
+                className="bg-gradient-to-r from-primary to-secondary hover:from-primary/80 hover:to-secondary/80 text-primary-foreground"
+                onClick={() => window.open('/Mathew_Leland_resume_2025.pdf', '_blank')}
+              >
                 <FaDownload className="mr-2 h-4 w-4" />
                 {aboutSection.buttons.downloadCv}
               </Button>
-              <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
+              <Button
+                variant="outline"
+                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+                onClick={() => window.open('mailto:mathewhleland@gmail.com?subject=Hi%20Mathew,%20I%20would%20love%20to%20connect!')}
+              >
                 <FaEnvelope className="mr-2 h-4 w-4" />
                 {aboutSection.buttons.contactMe}
               </Button>
-              <Button variant="ghost" size="icon" className="text-primary hover:bg-primary/20">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="text-primary hover:bg-primary/20"
+              >
                 <FaGithub className="h-5 w-5" />
               </Button>
-              <Button variant="ghost" size="icon" className="text-primary hover:bg-primary/20">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="text-primary hover:bg-primary/20"
+              >
                 <FaLinkedin className="h-5 w-5" />
               </Button>
             </motion.div>
@@ -217,5 +245,5 @@ export function AboutSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
