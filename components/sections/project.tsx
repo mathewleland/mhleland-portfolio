@@ -30,11 +30,11 @@ const projects: Project[] = [
     id: 1,
     title: 'CLEAR Verified',
     description:
-      'CLEAR Verified is an identity verification platform that allows users to verify their identity and documents.',
+      'CLEAR Verified is an identity verification platform that allows users to verify their identity in a browser.',
     image: './CLEAR_Verified.png',
     color: 'from-blue-500 to-purple-600',
     textColor: 'text-blue-100',
-    details: 'This application scaled to 2MM+ users within the first year',
+    details: 'Developed and scaled CLEAR’s flagship identity verification platform, serving 2M+ users across LinkedIn, Avis, Home Depot, and healthcare organizations—generating over 50% of new user enrollments.',
     technologies: [
       'React',
       'Next.js',
@@ -56,7 +56,7 @@ const projects: Project[] = [
     color: 'from-green-500 to-yellow-500',
     textColor: 'text-green-100',
     details:
-      'A/B tested and implemented a new enrollment flow that reduced the number of steps in the enrollment process, created brand new UI components and increased family conversion rates by 41%',
+      'Engineered highly configurable, CMS-driven reusable React components across the company’s site, leading to measurable conversion rate improvements via targeted A/B tests.',
     technologies: ['React', 'Gatsby', 'Typescript', 'Styled Components', 'Technical Writing'],
     live: 'https://clearme.com/enroll',
   },
@@ -64,12 +64,11 @@ const projects: Project[] = [
     id: 3,
     title: 'VectorSurv Maps',
     description:
-      'Primary front end engineer, specializing in all data visualizations for all mosquito collections in California and the US. Created maps for geospatial data with Mapbox and build charts with D3.js',
+      'Led development of responsive, high-performance data visualization tools (Mapbox SDK, D3.js) mapping thousands of data points, delivering real-time interaction and dynamic charting.',
     image: './vectorSurv.png',
     color: 'from-red-500 to-pink-600',
     textColor: 'text-red-100',
-    details:
-      'These maps plot out hundreds to sometimes thousands of data points and allow them to rapidly change to user input with minimal latency. Any input also dynamically renders new charts with shareable URLs. Visualizations rely on my own RESTful endpoints on an Express server and PostgreSQL database.',
+    details: 'Integrated frontend visualizations seamlessly with REST APIs (Express.js) and PostgreSQL, greatly enhancing user experience and analytical capabilities.',
     technologies: [
       'React',
       'PostgreSQL',

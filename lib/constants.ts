@@ -59,4 +59,9 @@ export const heroSection = {
   },
 };
 
+export const links = {
+  github: 'https://github.com/mathewleland',
+  linkedin: 'https://linkedin.com/in/mathewleland',
+  email: 'mailto:mathewhleland@gmail.com',
+}
 // Add other sections below as we process them

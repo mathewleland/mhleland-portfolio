@@ -6,7 +6,8 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { FaDownload, FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import Image from 'next/image';
-import { aboutSection } from '@/lib/constants';
+import { aboutSection, links } from '@/lib/constants';
+import Link from 'next/link';
 
 const floatingAnimation = {
   y: ['-10%', '10%'],
@@ -219,20 +220,24 @@ export function AboutSection() {
                 <FaEnvelope className="mr-2 h-4 w-4" />
                 {aboutSection.buttons.contactMe}
               </Button>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="text-primary hover:bg-primary/20"
-              >
-                <FaGithub className="h-5 w-5" />
-              </Button>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="text-primary hover:bg-primary/20"
-              >
-                <FaLinkedin className="h-5 w-5" />
-              </Button>
+              <Link href={links.github} target="_blank" rel="noopener noreferrer">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="text-primary hover:bg-primary/20"
+                >
+                  <FaGithub className="h-5 w-5" />
+                </Button>
+              </Link>
+              <Link href={links.linkedin} target="_blank" rel="noopener noreferrer">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="text-primary hover:bg-primary/20"
+                >
+                  <FaLinkedin className="h-5 w-5" />
+                </Button>
+              </Link>
             </motion.div>
           </div>
         </motion.div>
