@@ -29,105 +29,66 @@ const scrollbarStyles = (
 interface Skill {
   name: string;
   level: number;
-  icon: string;
+  image: string;
   description: string;
-  projects: string[];
+  technologies: string[];
 }
 
 export function SkillSection() {
-  const [showLevel, setShowLevel] = useState<boolean>(false);
+  const [showLevel, setShowLevel] = useState<boolean>(true);
   const [expandedSkill, setExpandedSkill] = useState<string | null>(null);
   const [visibleSkills, setVisibleSkills] = useState<number>(3);
 
   const skills: Skill[] = [
     {
-      name: 'React',
-      level: 90,
-      icon: 'react-icon',
-      description: 'Building interactive UIs with React',
-      projects: [
-        'E-commerce Platform',
-        'Social Media Dashboard',
-        'Portfolio Website',
-      ],
-    },
-    {
-      name: 'Node.js',
-      level: 85,
-      icon: 'nodejs-icon',
-      description: 'Server-side JavaScript with Node.js',
-      projects: [
-        'RESTful API',
-        'Real-time Chat Application',
-        'Task Management System',
-      ],
-    },
-    {
-      name: 'CSS',
-      level: 80,
-      icon: 'css-icon',
-      description: 'Styling web applications with CSS',
-      projects: [
-        'Responsive Landing Page',
-        'CSS Animation Library',
-        'Custom UI Component Kit',
-      ],
-    },
-    {
-      name: 'JavaScript',
+      name: 'Frontend Development',
       level: 95,
-      icon: 'js-icon',
-      description: 'Core language for web development',
-      projects: [
-        'Interactive Data Visualization',
-        'Browser Extension',
-        'JavaScript Game Engine',
+      image: './frontend.png',
+      description: 'Building interactive UIs with TypeScript',
+      technologies: [
+        'JavaScript',
+        'TypeScript',
+        'React',
+        'Next.js',
+        'Gatsby',
+        'Tailwind CSS',
+        'Material-UI',
+        'Bootstrap',
+        'SASS',
       ],
     },
     {
-      name: 'TypeScript',
-      level: 90,
-      icon: 'ts-icon',
-      description: 'Typed superset of JavaScript',
-      projects: [
-        'Enterprise-level CRM',
-        'TypeScript Library',
-        'Angular Application',
+      name: 'Backend Development',
+      level: 80,
+      image: './backend.png',
+      description: 'Software architecture and restful APIs',
+      technologies: [
+        'Node.js',
+        'Express',
+        'Nest.js',
+        'RESTful API',
+        'GraphQL',
+        'Python',
+        'Django',
+        'Ruby',
       ],
     },
     {
-      name: 'GraphQL',
-      level: 75,
-      icon: 'graphql-icon',
-      description: 'Efficient API queries with GraphQL',
-      projects: [
-        'GraphQL API Gateway',
-        'Real-time Data Subscription',
-        'GraphQL Client Integration',
+      name: 'DevOps',
+      level: 80,
+      image: './devops.png',
+      description: 'Containerization and orchestration',
+      technologies: [
+        'Terraform',
+        'Docker',
+        'Kubernetes',
+        'AWS',
+        'CI/CD',
+        'Git',
+        'GitHub Actions',
       ],
     },
-    {
-      name: 'Python',
-      level: 70,
-      icon: 'python-icon',
-      description: 'Versatile programming language',
-      projects: [
-        'Data Analysis Tool',
-        'Machine Learning Model',
-        'Web Scraping Script',
-      ],
-    },
-    {
-      name: 'Docker',
-      level: 65,
-      icon: 'docker-icon',
-      description: 'Containerization for applications',
-      projects: [
-        'Microservices Architecture',
-        'CI/CD Pipeline',
-        'Development Environment Setup',
-      ],
-    },
+
   ];
 
   const toggleSkillExpansion = (skillName: string) => {
@@ -182,12 +143,7 @@ export function SkillSection() {
             >
               Here's a collection of my skills with their proficiency levels.
             </motion.p>
-            <Button
-              onClick={() => setShowLevel(!showLevel)}
-              className="mb-8 transition-colors duration-300 hover:bg-purple-600"
-            >
-              {showLevel ? 'Hide Levels' : 'Show Levels'}
-            </Button>
+
           </div>
 
           <motion.div
@@ -217,7 +173,7 @@ export function SkillSection() {
                   exit={{
                     scale: 0.8,
                     opacity: 0,
-                    transition: { duration: 0.3 },
+                    transition: { duration: 0.1 },
                   }}
                   whileHover={{
                     scale: 1.05,
@@ -226,9 +182,8 @@ export function SkillSection() {
                   }}
                   className="relative overflow-hidden rounded-lg shadow-xl transition-all duration-300"
                   style={{
-                    background: `linear-gradient(135deg, hsl(${(index * 50) % 360}, 70%, 50%), hsl(${
-                      (index * 50 + 180) % 360
-                    }, 70%, 50%))`,
+                    background: `linear-gradient(135deg, hsl(${(index * 50) % 360}, 70%, 50%), hsl(${(index * 50 + 180) % 360
+                      }, 70%, 50%))`,
                   }}
                 >
                   <motion.div
@@ -266,7 +221,7 @@ export function SkillSection() {
                           <X className="h-4 w-4" />
                         </Button>
                         <h4 className="text-white font-semibold mb-2 text-2xl">
-                          {skill.name} {getSkillEmoji(skill.name)}
+                          {skill.name}
                         </h4>
                         <p
                           className="text-white mb-4 text-lg"
@@ -274,43 +229,13 @@ export function SkillSection() {
                         >
                           {skill.description}
                         </p>
-                        {showLevel && (
-                          <motion.div className="w-full bg-white/30 rounded-full h-4 mb-4 overflow-hidden">
-                            <motion.div
-                              className="h-full rounded-full"
-                              style={{
-                                backgroundColor: `hsl(${skill.level * 1.2}, 70%, 50%)`,
-                                width: `${skill.level}%`,
-                              }}
-                              initial={{ width: 0 }}
-                              animate={{ width: `${skill.level}%` }}
-                              transition={{ duration: 1, ease: 'easeOut' }}
-                            />
-                          </motion.div>
-                        )}
-                        {showLevel && (
-                          <motion.p
-                            className="text-white mb-4 font-semibold text-xl"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 0.5, duration: 0.5 }}
-                          >
-                            Proficiency:
-                            <motion.span
-                              initial={{ opacity: 0, y: 20 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              transition={{ delay: 1, duration: 0.5 }}
-                            >
-                              {skill.level}%
-                            </motion.span>
-                            🚀
-                          </motion.p>
-                        )}
+
+
                         <h5 className="text-white font-semibold mb-2 text-xl">
-                          Related Projects 📂:
+                          Technologies used 📂:
                         </h5>
                         <ul className="list-none text-white">
-                          {skill.projects.map((project, index) => (
+                          {skill.technologies.map((tech, index) => (
                             <motion.li
                               key={index}
                               initial={{ opacity: 0, x: -20 }}
@@ -318,7 +243,7 @@ export function SkillSection() {
                               transition={{ delay: 0.1 * index }}
                               className="mb-2 flex items-center"
                             >
-                              <span className="mr-2">🔹</span> {project}
+                              {tech}
                             </motion.li>
                           ))}
                         </ul>
@@ -335,14 +260,14 @@ export function SkillSection() {
                       >
                         <motion.div
                           className="flex items-center justify-center mb-4"
-                          initial={{ opacity: 0, rotate: -180 }}
-                          animate={{ opacity: 1, rotate: 0 }}
+                          initial={{ opacity: 0, filter: 'blur(20px)' }}
+                          animate={{ opacity: 1, filter: 'blur(0px)' }}
                           transition={{ delay: 0.5, duration: 0.5 }}
                         >
                           <img
-                            src={`/placeholder.svg?height=48&width=48`}
+                            src={skill.image}
                             alt={skill.name}
-                            className="w-12 h-12"
+                            className="w-full h-full"
                           />
                         </motion.div>
                         <motion.h3
@@ -353,7 +278,7 @@ export function SkillSection() {
                         >
                           {skill.name}
                         </motion.h3>
-                        {showLevel && (
+                        {(
                           <motion.div
                             className="w-full bg-white/30 rounded-full h-2.5 mb-4 overflow-hidden"
                             initial={{ width: 0 }}
