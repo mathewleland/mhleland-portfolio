@@ -65,7 +65,7 @@ const projects: Project[] = [
     title: 'VectorSurv Maps',
     description:
       'Led development of responsive, high-performance data visualization tools (Mapbox SDK, D3.js) mapping thousands of data points, delivering real-time interaction and dynamic charting.',
-    image: './vectorSurv.png',
+    image: './vectorsurv.png',
     color: 'from-red-500 to-pink-600',
     textColor: 'text-red-100',
     details: 'Integrated frontend visualizations seamlessly with REST APIs (Express.js) and PostgreSQL, greatly enhancing user experience and analytical capabilities.',
@@ -119,9 +119,7 @@ export function ProjectSection() {
               transition={{ delay: 0.2, duration: 0.5 }}
               className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto"
             >
-              Explore a collection of innovative projects that showcase my
-              expertise in cutting-edge web technologies and creative
-              problem-solving.
+              Explore my recent full-stack adventures—each crafted to deliver seamless experiences and powerful solutions
             </motion.p>
           </div>
 

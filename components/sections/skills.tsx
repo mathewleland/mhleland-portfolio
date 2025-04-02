@@ -53,7 +53,7 @@ export function SkillSection() {
         'Gatsby',
         'Tailwind CSS',
         'Material-UI',
-        'Bootstrap',
+        'Styled Components',
         'SASS',
       ],
     },
@@ -83,6 +83,7 @@ export function SkillSection() {
         'Docker',
         'Kubernetes',
         'AWS',
+        'Jenkins',
         'CI/CD',
         'Git',
         'GitHub Actions',
@@ -135,14 +136,7 @@ export function SkillSection() {
             >
               My Skills
             </motion.h2>
-            <motion.p
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.5 }}
-              className="text-lg md:text-xl text-muted-foreground mb-8"
-            >
-              Here's a collection of my skills with their proficiency levels.
-            </motion.p>
+
 
           </div>
 
@@ -205,7 +199,7 @@ export function SkillSection() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -50 }}
                         transition={{ duration: 0.3 }}
-                        className="absolute inset-0 p-6 overflow-y-auto scrollbar-thin scrollbar-thumb-white scrollbar-track-transparent max-h-full"
+                        className="absolute inset-0 p-6 overflow-y-auto scrollbar-thin scrollbar-thumb-white scrollbar-track-transparent max-h-full grid grid-rows-[auto_1fr]"
                         style={{
                           backgroundColor: `hsla(${(index * 50) % 360}, 70%, 50%, 0.95)`,
                         }}
@@ -220,33 +214,35 @@ export function SkillSection() {
                         >
                           <X className="h-4 w-4" />
                         </Button>
-                        <h4 className="text-white font-semibold mb-2 text-2xl">
-                          {skill.name}
-                        </h4>
-                        <p
-                          className="text-white mb-4 text-lg"
-                          style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.3)' }}
-                        >
-                          {skill.description}
-                        </p>
-
-
-                        <h5 className="text-white font-semibold mb-2 text-xl">
-                          Technologies used 📂:
-                        </h5>
-                        <ul className="list-none text-white">
-                          {skill.technologies.map((tech, index) => (
-                            <motion.li
-                              key={index}
-                              initial={{ opacity: 0, x: -20 }}
-                              animate={{ opacity: 1, x: 0 }}
-                              transition={{ delay: 0.1 * index }}
-                              className="mb-2 flex items-center"
-                            >
-                              {tech}
-                            </motion.li>
-                          ))}
-                        </ul>
+                        <div>
+                          <h4 className="text-white font-semibold mb-2 text-2xl">
+                            {skill.name}
+                          </h4>
+                          <p
+                            className="text-white mb-4 text-lg"
+                            style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.3)' }}
+                          >
+                            {skill.description}
+                          </p>
+                        </div>
+                        <div className="overflow-y-auto">
+                          <h5 className="text-white font-semibold mb-2 text-xl">
+                            Technologies used:
+                          </h5>
+                          <ul className="list-none text-white grid grid-cols-2 gap-x-6 gap-y-2">
+                            {skill.technologies.map((tech, index) => (
+                              <motion.li
+                                key={index}
+                                initial={{ opacity: 0, x: -20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: 0.1 * index }}
+                                className="flex items-center text-base"
+                              >
+                                {tech}
+                              </motion.li>
+                            ))}
+                          </ul>
+                        </div>
                       </motion.div>
                     ) : (
                       <motion.div
