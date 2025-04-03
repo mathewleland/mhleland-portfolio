@@ -41,6 +41,7 @@ export const aboutSection = {
 
 export const heroSection = {
   title: 'Mathew Leland | Software Engineer',
+  mobileTitle: 'Mathew Leland /n Software Engineer',
   typewriterSequence: [
     'Crafting clarity from complexity',
     1000,

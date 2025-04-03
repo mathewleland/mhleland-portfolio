@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { ChevronDown } from 'lucide-react';
 import Link from 'next/link';
 import { heroSection } from '@/lib/constants';
+import React from 'react';
 
 export function HeroSection() {
   return (
@@ -27,9 +28,24 @@ export function HeroSection() {
             initial={{ scale: 0.5, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.5 }}
-            className="text-4xl md:text-6xl font-bold mb-6"
+            className="text-4xl md:text-6xl font-bold mb-6 hidden md:block"
           >
             {heroSection.title}
+          </motion.h1>
+
+          {/* Title for smaller screens */}
+          <motion.h1
+            initial={{ scale: 0.5, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="text-4xl md:text-6xl font-bold mb-6 block md:hidden"
+          >
+            {heroSection.mobileTitle.split(' /n ').map((part, index, arr) => (
+              <React.Fragment key={index}>
+                {part}
+                {index < arr.length - 1 && <br />}
+              </React.Fragment>
+            ))}
           </motion.h1>
 
           <motion.div
@@ -59,7 +75,7 @@ export function HeroSection() {
               </Button>
             </Link>
             <Link href={heroSection.links.about}>
-              <Button size="lg" variant="outline">
+              <Button size="lg" variant="outline" className="bg-primary text-white hover:bg-primary/80">
                 {heroSection.buttons.about}
               </Button>
             </Link>
