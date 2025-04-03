@@ -1,11 +1,9 @@
 'use client';
 
-import { motion, AnimatePresence } from 'framer-motion';
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { ChevronRight, ChevronDown, X } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { GlobalStyles } from '@mui/material';
 import { FlipCard } from '../flipCard';
+
 
 const scrollbarStyles = (
   <GlobalStyles
@@ -36,8 +34,6 @@ interface Skill {
 }
 
 export function SkillSection() {
-  const [expandedSkill, setExpandedSkill] = useState<string | null>(null);
-  const [visibleSkills, setVisibleSkills] = useState<number>(3);
 
   const skills: Skill[] = [
     {

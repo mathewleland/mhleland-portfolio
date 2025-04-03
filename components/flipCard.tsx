@@ -2,10 +2,40 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 // Example: If using React Icons:
-import { FaReact, FaPython, FaAws, } from 'react-icons/fa';
-import { SiTerraform, SiDocker, SiGit, SiGithub } from 'react-icons/si';
-// ...and so on
+import {
+    FaJs, FaReact, FaSass, FaNodeJs, FaPython, FaDocker, FaAws, FaGithub, FaCogs, FaServer,
+} from 'react-icons/fa';
+import {
+    SiTypescript, SiNextdotjs, SiGatsby, SiTailwindcss, SiMui, SiStyledcomponents,
+    SiExpress, SiNestjs, SiGraphql, SiDjango, SiTerraform, SiKubernetes, SiJenkins
+} from 'react-icons/si';
 
+const iconMap = {
+    "JavaScript": FaJs,
+    "TypeScript": SiTypescript,
+    "React": FaReact,
+    "Next.js": SiNextdotjs,
+    "Gatsby": SiGatsby,
+    "Tailwind CSS": SiTailwindcss,
+    "Material-UI": SiMui,
+    "Styled Components": SiStyledcomponents,
+    "SASS": FaSass,
+    "Node.js": FaNodeJs,
+    "Express": SiExpress,
+    "Nest.js": SiNestjs,
+    "RESTful API": FaServer,
+    "GraphQL": SiGraphql,
+    "Python": FaPython,
+    "Django": SiDjango,
+    "Terraform": SiTerraform,
+    "Docker": FaDocker,
+    "Kubernetes": SiKubernetes,
+    "AWS": FaAws,
+    "Jenkins": SiJenkins,
+    "CI/CD": FaCogs,
+    "Git": FaGithub,
+    "GitHub Actions": FaGithub
+};
 interface FlipCardProps {
     index: number;
     title: string;
@@ -14,17 +44,6 @@ interface FlipCardProps {
     technologies: string[];
 }
 
-// Optionally, define a map of technology names to icons (React Icons, etc.)
-const iconMap: Record<string, JSX.Element> = {
-    React: <FaReact />,
-    Python: <FaPython />,
-    AWS: <FaAws />,
-    Terraform: <SiTerraform />,
-    Docker: <SiDocker />,
-    Git: <SiGit />,
-    Github: <SiGithub />,
-    // ...
-};
 
 export const FlipCard: React.FC<FlipCardProps> = ({
     index,
@@ -136,12 +155,12 @@ export const FlipCard: React.FC<FlipCardProps> = ({
                             <p className="mb-4">{description}</p>
 
                             {/* Technologies list in 2 columns */}
-                            <div className="grid grid-cols-2 gap-2">
+                            <div className="grid grid-cols-2 gap-2 mt-6">
                                 {technologies.map((tech) => (
                                     <div key={tech} className="flex items-center space-x-2">
                                         {/* If there's an icon match in iconMap, render it; else just fallback */}
-                                        {iconMap[tech] ? iconMap[tech] : null}
-                                        <span>{tech}</span>
+                                        {iconMap[tech as keyof typeof iconMap] ? React.createElement(iconMap[tech as keyof typeof iconMap]) : null}
+                                        <span className="text-2xl">{tech}</span>
                                     </div>
                                 ))}
                             </div>
