@@ -51,11 +51,11 @@ export const heroSection = {
   ],
   buttons: {
     projects: 'View Projects',
-    contact: 'Contact Me',
+    about: 'About Me',
   },
   links: {
     projects: '/#projects',
-    contact: '/#contact',
+    about: '/#about',
   },
 };
 

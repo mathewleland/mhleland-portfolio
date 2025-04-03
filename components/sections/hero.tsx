@@ -58,11 +58,11 @@ export function HeroSection() {
                 <ChevronDown className="ml-2 h-4 w-4 transition-transform group-hover:translate-y-1" />
               </Button>
             </Link>
-            {/* <Link href={heroSection.links.contact}>
+            <Link href={heroSection.links.about}>
               <Button size="lg" variant="outline">
-                {heroSection.buttons.contact}
+                {heroSection.buttons.about}
               </Button>
-            </Link> */}
+            </Link>
           </motion.div>
         </div>
       </div>
